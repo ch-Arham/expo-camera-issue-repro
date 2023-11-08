@@ -15,16 +15,17 @@ const CameraScreen = () => {
 
     const cameraRef = useRef<Camera | null>(null);
 
-    if (!permission)
-        return (
-            <View className="flex-1 justify-center items-center">
-                <Text className="text-red">Hello</Text>
-            </View>
-        );
+    if (!permission) return <View />;
 
     if (!permission.granted) {
         return (
-            <View className="flex-1 justify-center items-center">
+            <View
+                style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
                 <Text>No access to camera</Text>
                 <Button
                     title="Request Permission"
@@ -57,20 +58,25 @@ const CameraScreen = () => {
     };
 
     const handleUpload = () => {
-        console.log("Upload");
-
         router.back();
-
-        // save image in state management
     };
 
     return (
-        <View className="flex-1">
+        <View style={{ flex: 1 }}>
             {image ? (
-                <View className="flex-1">
+                <View style={{ flex: 1 }}>
                     <Image source={{ uri: image }} style={{ flex: 1 }} />
 
-                    <View className="flex-row absolute bottom-10 justify-between w-full px-10">
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            position: "absolute",
+                            bottom: 10,
+                            left: 10,
+                            right: 10,
+                            justifyContent: "space-between",
+                        }}
+                    >
                         <Feather
                             name="rotate-ccw"
                             size={40}
@@ -89,11 +95,21 @@ const CameraScreen = () => {
             ) : (
                 <Camera
                     type={type}
-                    className="flex-1"
+                    style={{ flex: 1 }}
                     ratio="16:9"
                     ref={cameraRef}
                 >
-                    <View className="flex-row absolute bottom-10 justify-between w-full px-10">
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            position: "absolute",
+                            bottom: 10,
+                            left: 10,
+                            right: 10,
+                            justifyContent: "space-between",
+                            padding: 30,
+                        }}
+                    >
                         <Feather
                             name="camera"
                             size={40}

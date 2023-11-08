@@ -45,7 +45,7 @@ function RootLayoutNav() {
             <Stack.Screen name="index" options={{ headerShown: false }} />
 
             <Stack.Screen
-                name="screens/CameraScreen"
+                name="CameraScreen"
                 options={{ headerShown: false }}
             />
         </Stack>
